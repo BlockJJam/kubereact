@@ -5,9 +5,10 @@ function KubeKillAutoRecovery() {
   return (
     <TestButtonLab
       errorBtnName="앱 죽이기"
-      normalBtnName="정상응답!"
+      normalBtnName="생존확인!"
       errorApiUrl="/api/stop/after/kill"
       normalApiUrl="/api/stop/after/ok"
+      descImage="/senario2.jpg"
     />
   );
 }

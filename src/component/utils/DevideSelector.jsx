@@ -9,7 +9,7 @@ function DevideSelector(props) {
         <div className="hero bg-secondary-content min-h-screen rounded-box pb-60">
           <div className="hero-content flex-col lg:flex-row">
             <img
-              src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+              src={process.env.PUBLIC_URL + '/huni.webp'}
               className="max-w-sm rounded-lg shadow-2xl"
             />
             <div>
@@ -25,7 +25,7 @@ function DevideSelector(props) {
         <div className="hero bg-secondary-content min-h-screen rounded-box pb-60">
           <div className="hero-content flex-col lg:flex-row ">
             <img
-              src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+              src={process.env.PUBLIC_URL + '/manggu.webp'}
               className="max-w-sm rounded-lg shadow-2xl"
             />
             <div>

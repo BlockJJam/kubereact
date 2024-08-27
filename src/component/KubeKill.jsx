@@ -4,9 +4,9 @@ import DevideSelector from 'component/utils/DevideSelector';
 function KubeKill(props) {
   return (
     <DevideSelector
-      firstName="JUST DIE.."
+      firstName="복구 실패 케이스"
       firstPageUrl="/kill/fail"
-      secondName="Self Healing"
+      secondName="복구 성공 케이스"
       secondPageUrl="/kill/recovery"
     />
   );

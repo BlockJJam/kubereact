@@ -7,10 +7,10 @@ function Header(props) {
       <div className="navbar bg-base-100">
         <div className="flex-1">
           <Link to="/kill" className="btn btn-ghost text-xl">
-            <li>KILL-APP</li>
+            <li>SELF-HEALING</li>
           </Link>
           <Link to="/loop" className="btn btn-ghost text-xl">
-            <li>SCALE-OUT</li>
+            <li>AUTO-SCALE</li>
           </Link>
         </div>
         <div className="flex-none">

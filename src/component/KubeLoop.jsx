@@ -4,9 +4,9 @@ import DevideSelector from 'component/utils/DevideSelector';
 function KubeLoop(props) {
   return (
     <DevideSelector
-      firstName="NO SCALE OUT"
+      firstName="확장 불가 케이스"
       firstPageUrl="/scale/fail"
-      secondName="SCALE OUT"
+      secondName="자동 확장 케이스"
       secondPageUrl="/scale/scale-out"
     />
   );

@@ -2,10 +2,12 @@
 import { useState } from 'react';
 
 function TestButtonLab(props) {
+  const backendUrl = process.env.REACT_APP_BE_URL;
   const errorBtnName = props.errorBtnName;
   const normalBtnName = props.normalBtnName;
-  const errorApiUrl = props.errorApiUrl;
-  const normalApiUrl = props.normalApiUrl;
+  const errorApiUrl = backendUrl + props.errorApiUrl;
+  const normalApiUrl = backendUrl + props.normalApiUrl;
+  const descImage = process.env.PUBLIC_URL + props.descImage;
 
   const [btn1Disabled, setBtn1Disable] = useState(false);
   const [loadingBtn1, setLoadingBtn1] = useState(false);
@@ -18,12 +20,14 @@ function TestButtonLab(props) {
   const [isHiddenResult, sethIsHiddenResult] = useState(true);
   const [healthCheckResult, setHealthCheckResult] = useState('success');
   const [healthCheckResultSvg, sethealthCheckResultSvg] = useState('');
+
   const killApplicationFetch = async () => {
     try {
       const response = await fetch(errorApiUrl);
       return response;
     } catch (e) {
       alert('알 수 없는 에러이니 개발자가 대처해라', e);
+      return null;
     }
   };
   const healthCheckFetch = async () => {
@@ -32,6 +36,7 @@ function TestButtonLab(props) {
       return response;
     } catch (e) {
       alert('알 수 없는 에러이니 개발자가 대처해라', e);
+      return null;
     }
   };
 
@@ -39,16 +44,18 @@ function TestButtonLab(props) {
     setBtnStr1('LOADING');
     setLoadingBtn1(true);
     const response = await killApplicationFetch();
-    if (response.ok) {
+    if (response != null && response.ok) {
       setTimeout(() => {
+        console.log('a');
         setBtnStr1(errorBtnName);
         setBtn1Disable(true);
         setLoadingBtn1(false);
       }, 30000);
     } else {
-      alert('알 수 없는 에러이니 개발자가 대처해라');
-      setBtn2Disable(true);
-      setLoadingBtn2(false);
+      console.log('b');
+
+      setBtn1Disable(true);
+      setLoadingBtn1(false);
     }
   };
 
@@ -56,14 +63,15 @@ function TestButtonLab(props) {
     setBtnStr2('LOADING');
     setLoadingBtn2(true);
     const response = await killApplicationFetch();
-    if (response.ok) {
+    if (response != null && response.ok) {
+      console.log('a');
       setTimeout(() => {
         setBtnStr2(errorBtnName);
         setBtn2Disable(true);
         setLoadingBtn2(false);
       }, 30000);
     } else {
-      alert('알 수 없는 에러이니 개발자가 대처해라');
+      console.log('b');
       setBtn2Disable(true);
       setLoadingBtn2(false);
     }
@@ -73,7 +81,7 @@ function TestButtonLab(props) {
     setBtnStr3('LOADING');
     setLoadingBtn3(true);
     const response = await healthCheckFetch();
-    if (response.ok) {
+    if (response != null && response.ok) {
       setHealthCheckResult('success');
       sethealthCheckResultSvg('M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z');
     } else {
@@ -150,6 +158,11 @@ function TestButtonLab(props) {
             </svg>
             <span>{healthCheckResult}</span>
           </span>
+        </div>
+      </div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 m-10">
+        <div className="grid place-items-center artboard artboard-horizontal phone-6">
+          <img src={descImage}></img>
         </div>
       </div>
     </>
